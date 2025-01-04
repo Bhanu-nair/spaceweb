@@ -1,0 +1,149 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+/* Add your existing CSS styles here */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+.intro-overlay {
+    /* Your overlay styles */
+}
+.stars, .twinkling, .clouds {
+    /* Your animation styles */
+}
+.glow {
+    /* Your glow effect styles */
+}
+.footer-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Background Layers */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.stars {
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: moveStars 50s linear infinite;
+}
+
+.twinkling {
+    background: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+.clouds {
+    background: url('https://www.transparenttextures.com/patterns/cloudy.png');
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: moveClouds 60s linear infinite;
+}
+
+
+
+
+/* Intro Window */
+.intro-window {
+    text-align: center;
+    padding: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease;
+}
+
+.intro-window h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.intro-window p {
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+
+.intro-window button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.intro-window button:hover {
+    background-color: #1e90ff;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #1e90ff;
+}
+
+/* Footer */
+.footer-text {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Animations */
+@keyframes moveStars {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.8; }
+}
+
+@keyframes moveClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+
+

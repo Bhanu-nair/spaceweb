@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Space and Robotics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Flex container for the page */
+        .explore-container {
+            display: flex;
+            flex-direction: column;  /* Stack elements vertically */
+            align-items: flex-start; /* Align text and content to the left */
+            padding: 20px;
+        }
+
+        /* Heading style */
+        h1 {
+            font-size: 50px;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 30px;  /* Adds space after the heading */
+        }
+
+        /* Paragraph (Body) style */
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;  /* Make the body text larger */
+            line-height: 1.5;  /* Add space between lines for readability */
+            margin-bottom: 20px;  /* Space after the paragraph */
+        }
+
+        /* Flex container for action buttons */
+        .action-buttons {
+            margin-top: 20px;
+        }
+
+        /* Like button with Dancing Script font and gradient background */
+        .like-button {
+            font-family: 'Dancing Script', cursive;  /* Apply new font */
+            font-size: 30px;
+            color: white;  /* Text color */
+            background: linear-gradient(45deg, #ff4081, #673ab7); /* Mixed gradient color (pink to purple) */
+            border: none;
+            cursor: pointer;
+            padding: 15px 30px;  /* Adjust size of the button */
+            border-radius: 25px;  /* Make the button edges rounded */
+            position: absolute;
+            top: 20px;
+            right: 20px;  /* Position on the top-right corner */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  /* Add shadow for depth */
+            transition: all 0.3s ease;  /* Smooth transition for hover effect */
+            opacity: 1;  /* Ensure the button is fully visible */
+        }
+
+        /* Hover effect for the Like button */
+        .like-button:hover {
+            background: linear-gradient(45deg, #ff80ab, #7c4dff);  /* Lighter gradient on hover */
+            transform: scale(1.1);  /* Slightly increase the button size on hover */
+        }
+
+        /* Action buttons (Let's Build, Sign Up) */
+        .action-buttons button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #1e2a47;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Hover effect on action buttons */
+        .action-buttons button:hover {
+            background-color: #3b4e75;
+        }
+
+        /* Like count display */
+        .like-count {
+            position: absolute;
+            top: 30px; /* Adjust this value to place it below the Like button */
+    right: 60px; /* Align it horizontally with the Like button */
+
+        font-family: 'Roboto', sans-serif;
+            font-size: 22px;
+            margin-top: 70px;  /* Adjust this to align below the Like button */
+            color: #ff4081;  /* Same color as the heart shape */
+        }
+
+        /* Reset Like button */
+        .reset-button {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .reset-button:hover {
+            background-color: #f50057;
+        }
+    </style>
+</head>
+<body>
+    <div class="explore-container">
+        <h1>Let’s Think and Build Together</h1>
+        <p>
+            Step into the wonders of the universe with AstroBotics—where imagination meets cutting-edge robotic technology. Join our dynamic space community to share your groundbreaking ideas, ignite fascinating discussions about space exploration, and delve into the mysteries of the cosmos. Imagine the boundless possibilities as robotics and visionary concepts merge, creating the future of space technology. Together, we can revolutionize exploration and uncover the secrets of the universe. The journey has just begun—let's build it together!
+        </p>
+
+        <!-- Like Button with the name "Like" -->
+        <button class="like-button" id="like-btn">Like</button>
+
+        <!-- Like Count Display -->
+        <div class="like-count" id="like-count"> 0</div>
+
+       
+        <div class="action-buttons">
+            <!-- "Let’s Build" button -->
+            <button id="build-btn">Let’s Build</button>
+            
+            <!-- Sign Up button -->
+            <button id="signup-btn">Sign Up</button>
+        </div>
+    </div>
+
+    <footer class="footer-text">
+        <p>© 2025 Space Journey | Crafted with ASTROBOTICS💫</p>
+    </footer>
+
+    <script>
+        // Get the like status from localStorage (if the user has already liked)
+        let hasLiked = localStorage.getItem('hasLiked') === 'true'; // Check if the like action has already been performed
+        let likeCount = localStorage.getItem('likeCount') ? parseInt(localStorage.getItem('likeCount')) : 0;
+
+        // If the user has already liked, disable the button and display the like count
+        if (hasLiked) {
+            document.getElementById('like-btn').disabled = true;
+            document.getElementById('like-count').textContent = ` ${likeCount}`;
+        }
+
+        // Handle the Like button click event
+        document.getElementById('like-btn').addEventListener('click', function() {
+            if (!hasLiked) {
+                likeCount++;  // Increment the like count
+                localStorage.setItem('likeCount', likeCount);  // Store the updated like count in localStorage
+                localStorage.setItem('hasLiked', 'true');  // Mark that the user has liked
+
+                document.getElementById('like-count').textContent = `Likes: ${likeCount}`;  // Update the like count display
+                document.getElementById('like-btn').disabled = true;  // Disable the like button after the first click
+            }
+        });
+
+        
+        // Optional JavaScript for handling other buttons' actions
+        document.getElementById('build-btn').addEventListener('click', function() {
+            window.location.href = 'build.html';  // Redirect to the build page (replace 'build.html' with the actual page URL)
+        });
+
+        document.getElementById('signup-btn').addEventListener('click', function() {
+            window.location.href = 'signup.html';  // Redirect to the sign-up page (replace 'signup.html' with the actual sign-up URL)
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
